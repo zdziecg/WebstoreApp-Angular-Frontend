@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-// import {RouterModule} from '@angular/router';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CartComponent } from './components/cart/cart.component';
@@ -14,7 +13,6 @@ import {CheckoutComponent} from './components/checkout/checkout.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {HomeRoutingModule} from './home-routing.module';
-// import {AppRoutingModule} from './app-routing.module';
 
 
 @NgModule({
@@ -23,7 +21,8 @@ import {HomeRoutingModule} from './home-routing.module';
     ProductsComponent,
     ProductDetailsComponent,
     CartComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
