@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import {Injectable, NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -12,8 +11,25 @@ import {CartDetailsComponent} from './components/cart-details/cart-details.compo
 import {CheckoutComponent} from './components/checkout/checkout.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {HomeRoutingModule} from './home-routing.module';
+// import {HomeRoutingModule} from './home-routing.module';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import {UserServiceService} from './services/user-service.service';
+import { HelloWorldComponent } from './components/hello-world/hello-world.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import {HttpInterceptorService} from './http-interceptor.service';
 
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+    });
+    return next.handle(xhr);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -22,7 +38,12 @@ import {HomeRoutingModule} from './home-routing.module';
     ProductDetailsComponent,
     CartComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    HelloWorldComponent,
+    MenuComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -31,12 +52,17 @@ import {HomeRoutingModule} from './home-routing.module';
     NgxPaginationModule,
     AppRoutingModule,
     RouterModule,
-    HomeRoutingModule
-    // RouterModule
+    // HomeRoutingModule
   ],
   exports: [ ProductsComponent, CartComponent],
 
-  providers: [],
+  providers: [ UserServiceService,  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+{
+}

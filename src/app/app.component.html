@@ -1,22 +1,16 @@
+<div class="container">
+</div><!--<div class="conta" style="background-image: -moz-element()">-->
 <h1>Witaj </h1>
-<router-outlet></router-outlet>
-<nav class="nav nav-pills nav-fill">
-  <a class="nav-item nav-link active"  [routerLink]="['/']">Strona główna</a>
-  <a class="nav-item nav-link" href="http://localhost:7776/login">Logowanie </a>
-  <a class="nav-item nav-link" href="#">Rejestracja</a>
-  <a class="nav-item nav-link "> <app-cart      [routerLink]="['/cartDetails']">
-  </app-cart></a>
-</nav>
-<router-outlet></router-outlet>
-<!--<ul>-->
-<!--  <li>-->
-<!--    <a [routerLink]="['/']">Strona główna</a>-->
-<!--  </li>-->
-<!--  <li><app-cart      [routerLink]="['/cartDetails']">-->
-<!--    <a [routerLink]="['/cartDetails']">O Nas</a>-->
-<!--  </app-cart>-->
-<!--  </li>-->
-<!--  <div class="outer-outlet">-->
-<!--    <router-outlet></router-outlet>-->
-<!--  </div>-->
-<!--</ul>-->
+<!--  <nav class="nav nav-pills nav-fill">-->
+<!--    <a class="nav-item nav-link active" [routerLink]="['/']">Strona główna</a>-->
+<!--    <a class="nav-item nav-link " [routerLink]="['/register']">Rejestracja</a>-->
+
+<!--    <a class="nav-item nav-link" href="http://localhost:7776/login">Logowanie </a>-->
+<!--    <a class="nav-item nav-link ">-->
+<!--      <app-cart [routerLink]="['/cartDetails']">-->
+<!--      </app-cart>-->
+<!--    </a>-->
+<!--  </nav>-->
+<app-menu></app-menu>
+  <router-outlet></router-outlet>
+

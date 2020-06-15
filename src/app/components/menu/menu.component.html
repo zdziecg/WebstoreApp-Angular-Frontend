@@ -1,0 +1,13 @@
+<nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link active" [routerLink]="['/']">Strona główna</a>
+    <a class="nav-item nav-link " [routerLink]="['/register']">Rejestracja</a>
+
+    <a class="nav-item nav-link"
+           *ngIf="!isLoggedIn" class="nav-link" href="/login">Logowanie     </a>
+    <a class="nav-item nav-link"
+    *ngIf="isLoggedIn" class="nav-link" href="/logout" (click)=handleLogout()>Logout</a>
+    <a class="nav-item nav-link ">
+      <app-cart [routerLink]="['/cartDetails']">
+      </app-cart>
+    </a>
+  </nav>

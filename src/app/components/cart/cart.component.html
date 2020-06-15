@@ -1,0 +1,10 @@
+<button type="button" class="btn btn-outline-warning" [disabled]="cartservice.itemCount == 0" routerLink="/cart-details">
+  Koszyk:
+  <span *ngIf="cartservice.itemCount > 0">
+              {{cartservice.itemCount }} produkt(ów)
+             za {{cartservice.cartPrice | currency:"pln" }} zł
+        </span>
+  <span *ngIf="cartservice.itemCount == 0">
+            (pusty)
+        </span>
+</button>
