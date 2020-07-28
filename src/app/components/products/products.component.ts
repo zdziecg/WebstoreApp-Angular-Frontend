@@ -3,6 +3,8 @@ import {ProductServiceService} from '../../services/product-service.service';
 import {Router} from '@angular/router';
 import {CartServiceService} from '../../services/cart-service.service';
 import {Product} from '../../model/product';
+import {ImageService} from '../../services/image.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
@@ -21,9 +23,14 @@ export class ProductsComponent implements OnInit {
   public productsPerPages = 6;
   public selectedPage = 1;
   config: any;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
   collection = { count: 10, products: [] };
+  private imageName: string;
   constructor(private productService: ProductServiceService, private cartservice: CartServiceService, private router: Router,
-              // private app: AppService, private httpClient: HttpClient
+              private imageService: ImageService,
+              private httpClient: HttpClient
               ) {
     for (let i = 0; i < this.collection.count; i++) {
       this.collection.products.push(
@@ -56,14 +63,6 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-
-  getProductbyId(productId) {
-    this.productService.getProductById(productId).subscribe(product => {
-      console.log(product);
-      this.product = product;
-    });
-  }
-
   getProductsByCategory(cat: string) {
     this.productService.getProductsByCategory(cat).subscribe(
       value => {
@@ -71,10 +70,34 @@ export class ProductsComponent implements OnInit {
         this.products = value;
       }
     );
+    this.pageChanged(event); {
+      this.config.currentPage = 1;
+    }
   }
   addProductToCart(product: Product) {
     this.cartservice.addLine(product);
+    this.productService.addProductToCart(this.productId);
     this.router.navigateByUrl('/cart-details');
+  }
+  getImages(name: string) {
+    this.imageService.getImageByName(name + '.JPG').subscribe(
+      res => {
+        this.retrieveResonse = res;
+        this.base64Data = this.retrieveResonse.picByte;
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+      }
+      );
+  }
+
+  getImage(product: Product) {
+    this.httpClient.get('http://localhost:7776/image/get/' + product.productId + '.JPG')
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
   }
   // authenticated() { return this.app.authenticated; }
 

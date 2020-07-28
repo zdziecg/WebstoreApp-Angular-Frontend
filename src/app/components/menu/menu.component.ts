@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from '../../auth.service';
+import {AuthenticationService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,9 +16,11 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
-    console.log('menu ->' + this.isLoggedIn);
   }
 
+  getUserName() {
+    this.authenticationService.getLoggedInUserName();
+  }
   handleLogout() {
     this.authenticationService.logout();
   }

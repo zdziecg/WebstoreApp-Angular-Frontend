@@ -1,17 +1,30 @@
-<nav class="nav nav-pills nav-fill">
+<nav class="nav nav-pills nav-fill" style="background-color: black; padding-top: 10px; padding-bottom: 10px">
     <a class="nav-item nav-link " style="  position: relative">
       <a [routerLink]="['/']" style=" margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%)"> Strona główna </a></a>
-    <a class="nav-item nav-link"
-           *ngIf="!isLoggedIn" href="/login">Logowanie
-          <a class="nav-item nav-link " [routerLink]="['/register']">Rejestracja</a>
+  transform: translate(-50%, -50%); color: #f1f1f1"> Main page </a></a>
+    <a class="nav-item nav-link" style="  position: relative" >
+          <a *ngIf="!isLoggedIn" [routerLink]="['/login']" style=" margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+text-decoration: none; color: #f1f1f1">Login |
+          <a [routerLink]="['/register']" style="text-decoration: none;color: #f1f1f1">Register </a>
     </a>
-    <a class="nav-item nav-link"
-    *ngIf="isLoggedIn"  href="/logout" (click)=handleLogout()>Logout</a>
+    <a *ngIf="isLoggedIn"
+      href="/logout" (click)=handleLogout() style="margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+text-decoration: none; color: #f1f1f1">Logout</a>
+      </a>
     <a class="nav-item nav-link ">
       <app-cart [routerLink]="['/cartDetails']">
       </app-cart>

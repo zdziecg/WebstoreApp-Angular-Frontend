@@ -2,13 +2,13 @@
 
 <div class="container-xl">
 <div *ngIf="product; else noProduct" class=".container-lg " style="display: flex; margin-top: 50px" >
-<div class="card mb-3" style="max-width: 540px; display: flex">
+<div class="card mb-3" style="max-width: 960px; display: flex">
 
   <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="..." class="card-img" alt="..." style="min-height: 320px">
+    <div class="col-md-6">
+      <img src="http://localhost:7776/images/products/{{product.productId}}.jpg" class="card-img" alt="..." style="min-height: 359px; width: 332px">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card-body">
         <h5 class="card-title">{{product.name | uppercase}}</h5>
         <table class="table table-borderless">

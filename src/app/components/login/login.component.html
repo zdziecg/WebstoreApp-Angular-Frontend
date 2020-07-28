@@ -1,42 +1,35 @@
-<!--<div class="alert alert-danger" [hidden]="!error">-->
-<!--  There was a problem logging in. Please try again.-->
-<!--</div>-->
+<app-menu></app-menu>
 
-<!--<div class="container">-->
+<div class="container" style="max-width: 500px">
+  <div class="card m-3" style="max-height: 50px" *ngIf="loginSuccess">
+    <div class="col-xs-12">
+      <p class="alert alert-success">
+        <strong>Login Success!</strong>
 
-<!--<form #loginform="ngForm"(ngSubmit)="doLogin()">-->
-
-<!--  <div class="form-group">-->
-<!--    <label for="username">Username:</label>-->
-<!--    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username"/>-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="password">Password:</label>-->
-<!--    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password"/>-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--</form>-->
-<!--</div>-->
-
-<div class="container col-lg-6">
-  <h1 class="text-center">Login</h1>
-  <div class="card">
+      </p>
+    </div>
+  </div>
+  <div class="card m-3"  [hidden]="loginSuccess">
+    <h5 class="card-header text-center">Login form</h5>
     <div class="card-body">
-      <form class="form-group">
+      <form>
         <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-        <div class="form-group">
-          <label for="email">User Name :</label>
-          <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
+        <div class="form-group ">
+          <label for="username">User Name:</label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="username"
                  name="username">
         </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
+        <div class="form-group ">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="password" id="password"
                  name="password">
         </div>
-        <button (click)=handleLogin() class="btn btn-success">Login</button>
+        <div class="text-center">
+          <button class="btn btn-success mr-1" (click)="handleLogin()">Login</button>
+          <button class="btn btn-danger" type="reset">Cancel</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
+

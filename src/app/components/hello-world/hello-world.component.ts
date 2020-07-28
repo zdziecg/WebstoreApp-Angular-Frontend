@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HelloWordService} from '../../hello-world.service';
+import {HelloWordService} from '../../services/hello-world.service';
 
 @Component({
   selector: 'app-hello-world',

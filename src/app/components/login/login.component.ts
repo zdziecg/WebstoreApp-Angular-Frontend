@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
-import {AuthenticationService} from '../../auth.service';
+import {AuthenticationService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
   private user: User;
+  returnUrl: string;
+
 
   constructor(
     private http: HttpClient,
@@ -28,7 +30,11 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService) {   }
 
   ngOnInit() {
+    this.authenticationService.logout();
+
     sessionStorage.setItem('token', '');
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/hello-world';
+
 
   }
 
@@ -36,9 +42,10 @@ export class LoginComponent implements OnInit {
     this.authenticationService.authenticationService(this.username, this.password).subscribe((result) => {
       this.invalidLogin = false;
       this.loginSuccess = true;
-      this.successMessage = 'Login Successful.';
       sessionStorage.setItem('token', btoa(this.username + ':' + this.password));
-      this.router.navigate(['/hello-world']);
+      setTimeout(() => {
+        this.router.navigate(['/hello-world']);
+      }, 1000);
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;
@@ -50,7 +57,7 @@ export class LoginComponent implements OnInit {
     }).subscribe(isValid => {
       if (isValid) {
         sessionStorage.setItem('token', btoa(this.user.username + ':' + this.user.password));
-        this.router.navigate(['']);
+        this.router.navigateByUrl(this.returnUrl);
       } else {
         alert('Authentication failed.');
       }

@@ -1,48 +1,59 @@
-<app-menu></app-menu>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--<div class="w3-container">-->
+  <app-menu></app-menu>
+<!--</div>-->
 
-<div class="categ">
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block disabled">
-    Category:
-  </button>
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block"(click)="getAllProducts()" >
-    All
-  </button>
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="getProductsByCategory('Clothes')" >
-    Clothes
-  </button>
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block"(click)="getProductsByCategory('Food')" >
-    Food
-  </button>
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block"(click)="getProductsByCategory('Food')" >
-    Food
-  </button>
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block"(click)="getProductsByCategory('Food')" >
-    Food
-  </button>
-</div>
-<div class="card"  *ngFor="let product of products| paginate: config "
-     style="width: 18rem; display: inline-block; margin-top: 20px;margin-left: 20px">
-  <!--  <img src="..." class="card-img-top" alt="...">-->
-  <div class="card-body">
-<!--    <th scope="row">{{product.id}}</th>-->
-    <h5 class="card-title">{{product.name}}{{product.productId}}</h5>
-    <p class="card-text" style="min-height: 50px">{{product.description}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{product.category}}</li>
-    <li class="list-group-item">{{product.price |currency:""}} </li>
-  </ul>
-  <div class="card-body">
-    <button class="btn btn btn-success " (click)="addProductToCart(product)">Dodaj do koszyka</button>
-    <button class="btn btn-outline-info" routerLink="/product-details/{{product.productId}}">
-      <!--      <span class="badge">{{i+1}}</span> {{product.name}}-->
-         Szczegóły
+<div class="w3-row ">
+  <div class="w3-quarter w3-container">
+
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block disabled">
+      Category:
     </button>
-<!--    <button class="btn btn-outline-info" (click)="selctProduct(product.productId)"-->
-<!--            [routerLink]="['/products', product.productId]">-->
-<!--      InneSz-->
-<!--    </button>-->
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block"(click)="getAllProducts()" >
+      All
+    </button>
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block" (click)="getProductsByCategory('Electronics')" >
+      Electronics
+    </button>
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block"(click)="getProductsByCategory('Health')" >
+      Health
+    </button>
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block"(click)="getProductsByCategory('Sport')" >
+      Sport
+    </button>
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block"(click)="getProductsByCategory('Fashion')" >
+      Fashion
+    </button>
   </div>
-</div>
-<pagination-controls (pageChange)="pageChanged($event)" style="text-align: center"></pagination-controls>
+  <div class="w3-threequarter w3-container">
+    <div class="card"  *ngFor="let product of products|paginate: config "
+         style="width: 18rem; display: inline-block; margin-top: 20px;margin-left: 20px">
+      <img class="card-img-top" src="http://localhost:7776/images/products/{{product.productId}}.jpg" style="height: 240px" alt="Card image cap">
+      <div class="card-body">
+        <!--    <th scope="row">{{product.id}}</th>-->
+        <h5 class="card-title">{{product.name}}{{product.productId}} </h5>
+        <p class="card-text" style="min-height: 50px">{{product.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
 
+        <li class="list-group-item">{{product.category}}</li>
+        <li class="list-group-item">{{product.price |currency:""}} </li>
+      </ul>
+      <div class="card-body">
+        <button class="btn btn btn-success " (click)="addProductToCart(product)">Add to cart</button>
+        <button class="btn btn-outline-info" routerLink="/product-details/{{product.productId}}">
+          <!--      <span class="badge">{{i+1}}</span> {{product.name}}-->
+          Details
+        </button>
+        <!--    <button class="btn btn-outline-info" (click)="selctProduct(product.productId)"-->
+        <!--            [routerLink]="['/products', product.productId]">-->
+        <!--      InneSz-->
+        <!--    </button>-->
+      </div>
+    </div>
+  </div>
+  <div class="pagination-lg">
+  <pagination-controls  class="my-pagination" (pageChange)="pageChanged($event)" style="text-align: center"></pagination-controls>
+</div>
+  </div>
