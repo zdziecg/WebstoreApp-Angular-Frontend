@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.loginSuccess = true;
       sessionStorage.setItem('token', btoa(this.username + ':' + this.password));
       setTimeout(() => {
-        this.router.navigate(['/hello-world']);
+        this.router.navigateByUrl(this.returnUrl);
       }, 1000);
     }, () => {
       this.invalidLogin = true;

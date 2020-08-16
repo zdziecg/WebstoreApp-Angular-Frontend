@@ -22,6 +22,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {HttpInterceptorService} from './services/http-interceptor.service';
 import { ImageComponent } from './components/image/image.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -47,7 +49,9 @@ export class XhrInterceptor implements HttpInterceptor {
     HelloWorldComponent,
     MenuComponent,
     LogoutComponent,
-    ImageComponent
+    ImageComponent,
+    OrderComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
