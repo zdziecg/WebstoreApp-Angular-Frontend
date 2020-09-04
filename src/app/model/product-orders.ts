@@ -1,5 +1,5 @@
-import {ProductOrder} from './product-order';
+import {CartItem} from './cartItem';
 
 export class ProductOrders {
-  productOrders: ProductOrder[] = [];
+  productOrders: CartItem[] = [];
 }

@@ -13,7 +13,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {AuthGuard} from './authguard';
 
-// import {HomeRoutingModule} from './home-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {UserServiceService} from './services/user-service.service';

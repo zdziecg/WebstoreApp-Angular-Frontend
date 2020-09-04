@@ -14,19 +14,19 @@
         <table class="table table-borderless">
           <tbody>
           <tr>
-            <th scope="row">Opis:</th>
+            <th scope="row">Description:</th>
             <td>{{product.description}}</td>
           </tr>
           <tr>
-            <th scope="row">Kategoria:</th>
+            <th scope="row">Category:</th>
             <td>{{product.category}}</td>
           </tr>
           <tr>
-            <th scope="row">Cena:</th>
-            <td>{{product.price}}</td>
+            <th scope="row">Price:</th>
+            <td>{{product.price | currency:'EUR':'symbol' : '1.2-2' }}</td>
           </tr>
           <tr>
-            <th scope="row">Ilość dostępnych:</th>
+            <th scope="row">Units in stock:</th>
             <td>{{product.unitsInStock}}</td>
           </tr>
           </tbody>
@@ -35,14 +35,14 @@
     </div>
   </div>
   <div class="card-body">
-    <button class="btn btn btn-success  " style="float: right" (click)="addProductToCart(product)">Dodaj do koszyka</button>
+    <button class="btn btn btn-success  " style="float: right" (click)="addProductToCart(product)">Add to cart</button>
   </div>
 </div>
 </div>
 <div class="card-body">
-  <button class="btn btn-secondary" routerLink="/products">Powrót</button>
+  <button class="btn btn-secondary" routerLink="/products">Go back</button>
 </div>
   <ng-template #noProduct>
-    <h1> Brak produktu</h1>
+    <h1> Product unavalible</h1>
   </ng-template>
 </div>

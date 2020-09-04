@@ -76,7 +76,6 @@ export class ProductsComponent implements OnInit {
   }
   addProductToCart(product: Product) {
     this.cartservice.addLine(product);
-    this.productService.addProductToCart(this.productId);
     this.router.navigateByUrl('/cart-details');
   }
   getImages(name: string) {

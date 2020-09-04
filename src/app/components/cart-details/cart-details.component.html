@@ -27,10 +27,10 @@
       </td>
       <td>{{line.product.name}}</td>
       <td class="text-xs-right">
-        {{line.product.price | currency:"zł":true:"2.2-2"}}
+        {{line.product.price |  currency:'EUR':'symbol' : '1.2-2'}}
       </td>
       <td class="text-xs-right">
-        {{(line.itemTotal()) | currency:"zł":true:"2.2-2" }}
+        {{line.product.price * line.quantity |  currency:'EUR':'symbol' : '1.2-2'  }}
       </td>
       <td class="text-xs-center">
         <button class="btn btn-sm btn-danger"
@@ -44,7 +44,7 @@
     <tr>
       <td colspan="3" class="text-xs-right">Total:</td>
       <td class="text-xs-right">
-        {{cartservice.cartPrice | currency:"zł":true:"2.2-2"}}
+        {{cartservice.cartPrice |  currency:'EUR':'symbol' : '1.2-2' }}
       </td>
     </tr>
     </tfoot>
@@ -52,8 +52,8 @@
 </div>
 
 <div class="text-xs-center">
-  <button class="btn btn-primary" routerLink="/store">Continue</button>
-  <button class="btn btn-secondary" routerLink="/checkout"
+  <button class="btn btn-secondary" routerLink="/store">Continue</button>
+  <button class="btn btn-primary" routerLink="/checkout"
           [disabled]="cartservice.items.length == 0  " >
     Checkout
   </button>

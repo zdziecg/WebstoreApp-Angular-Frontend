@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HelloWordService} from '../../services/hello-world.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-hello-world',
@@ -9,15 +10,22 @@ import {HelloWordService} from '../../services/hello-world.service';
 export class HelloWorldComponent implements OnInit {
 
   message: string;
-
-  constructor(private helloWorldService: HelloWordService) { }
+  returnUrl: string;
+  constructor(private helloWorldService: HelloWordService, private route: ActivatedRoute,
+              private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/products';
 
     console.log('HelloWorldComponent');
     this.helloWorldService.helloWorldService().subscribe( (result) => {
       this.message = result.content;
-    });
+      setTimeout(() => {
+          this.router.navigateByUrl(this.returnUrl);
+        }, 2000);
+    }
+    );
   }
 
 }

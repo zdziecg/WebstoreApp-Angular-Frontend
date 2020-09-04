@@ -1,8 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--<div class="w3-container">-->
   <app-menu></app-menu>
-<!--</div>-->
 
 <div class="w3-row ">
   <div class="w3-quarter w3-container">
@@ -32,24 +30,18 @@
       <img class="card-img-top" src="http://localhost:7776/images/products/{{product.productId}}.jpg" style="height: 240px" alt="Card image cap">
       <div class="card-body">
         <!--    <th scope="row">{{product.id}}</th>-->
-        <h5 class="card-title">{{product.name}}{{product.productId}} </h5>
+        <h5 class="card-title">{{product.name}} </h5>
         <p class="card-text" style="min-height: 50px">{{product.description}}</p>
       </div>
       <ul class="list-group list-group-flush">
 
         <li class="list-group-item">{{product.category}}</li>
-        <li class="list-group-item">{{product.price |currency:""}} </li>
+        <li class="list-group-item">{{product.price  | currency:'EUR':'symbol' : '1.2-2' }} </li>
       </ul>
       <div class="card-body">
         <button class="btn btn btn-success " (click)="addProductToCart(product)">Add to cart</button>
-        <button class="btn btn-outline-info" routerLink="/product-details/{{product.productId}}">
-          <!--      <span class="badge">{{i+1}}</span> {{product.name}}-->
-          Details
+        <button class="btn btn-outline-info" routerLink="/product-details/{{product.productId}}"> Details
         </button>
-        <!--    <button class="btn btn-outline-info" (click)="selctProduct(product.productId)"-->
-        <!--            [routerLink]="['/products', product.productId]">-->
-        <!--      InneSz-->
-        <!--    </button>-->
       </div>
     </div>
   </div>

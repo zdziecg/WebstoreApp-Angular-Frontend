@@ -17,13 +17,18 @@ text-decoration: none; color: #f1f1f1">Login |
           <a [routerLink]="['/register']" style="text-decoration: none;color: #f1f1f1">Register </a>
     </a>
     <a *ngIf="isLoggedIn"
-      href="/logout" (click)=handleLogout() style="margin: 0;
+       style="margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-text-decoration: none; color: #f1f1f1">Logout</a>
+text-decoration: none; color: #f1f1f1">
+      <a [routerLink]="['/order']" style="text-decoration: none;color: #f1f1f1">Orders</a>
+
+      <a [routerLink]="['/logout']" (click)=handleLogout() style="text-decoration: none;color: #f1f1f1"> Logout   </a>
+
+    </a>
       </a>
     <a class="nav-item nav-link ">
       <app-cart [routerLink]="['/cartDetails']">
