@@ -1,10 +1,10 @@
 # WebstoreApp-Angular-Frontend
 Frontend part of the web application of the full stack webstore. The backend part is available in the link: https://github.com/zdziecg/WebstoreApp-SpringBoot-Backend
 
-Live Demo Full Stack Websore: https://zdziecg-webstore.herokuapp.com/#/
+## Live Demo Full Stack Websore: https://zdziecg-webstore.herokuapp.com/#/
 This is a Single Page Appliaction using Spring Boot 2 and Angular 9.
 
-# WebstoreApp
+## WebstoreApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
